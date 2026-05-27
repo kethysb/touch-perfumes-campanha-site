@@ -74,6 +74,7 @@ Arquivos originais recebidos:
 - Hero destaca R$39,98 por perfume.
 - Hero atualizado com preço avulso R$45,00 e kit por R$39,98 cada.
 - Seção de comparação com referências: Good Girl, 212 VIP Rosé, Silver Scent e Invictus, mostrando preço de referência do importado versus Touti por R$45,00 ou R$39,98 no kit.
+- Cards do comparativo agora usam imagens de referência dos perfumes importados em URLs públicas externas, com aviso de que são apenas referência/inspiração e sem vínculo oficial.
 - Seção de preço e fixação com "6 a 8 horas no corpo".
 - Texto mais direto, com menos tom genérico.
 - Mantidas as fotos originais da Touti no site.
