@@ -129,9 +129,43 @@
         .whatsapp-outline:hover {
             background: rgba(37, 211, 102, 0.08);
         }
+        @media (max-width: 767px) {
+            .mobile-title {
+                font-size: 40px;
+                line-height: 44px;
+                letter-spacing: 0;
+            }
+            .mobile-heading {
+                font-size: 34px;
+                line-height: 40px;
+                letter-spacing: 0;
+            }
+            .mobile-cta {
+                min-height: 56px;
+                padding-left: 18px;
+                padding-right: 18px;
+                text-align: center;
+            }
+            .mobile-pill {
+                min-height: 44px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .mobile-sticky-cta {
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(12px);
+                transition: opacity 180ms ease, transform 180ms ease;
+            }
+            .mobile-sticky-cta.is-visible {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
-<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container pb-24 md:pb-0">
 <!-- TopNavBar -->
 <header class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-secondary/20">
 <div class="flex justify-between items-center w-full px-edge-margin-mobile md:px-edge-margin-desktop py-4 max-w-container-max mx-auto">
@@ -154,34 +188,35 @@
 </div>
 </div>
 </header>
-<main class="flex-grow pt-24 md:pt-32">
+<main class="flex-grow pt-20 md:pt-32">
 <!-- Hero Section -->
-<section class="relative w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop py-stack-md md:py-stack-xl flex flex-col md:flex-row items-center gap-stack-lg hero-glow">
+<section class="relative w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop py-8 md:py-stack-xl flex flex-col md:flex-row items-center gap-8 md:gap-stack-lg hero-glow">
 <div class="w-full md:w-1/2 flex flex-col items-start z-10">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-6 border border-secondary/30 px-3 py-1 rounded">Americana Shopping | estoque limitado</span>
-<h1 class="font-display-lg text-display-lg text-on-surface mb-6">Perfume com presença de importado por R$39,98 cada.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md">No kit Touti, você paga R$199,90 e leva 5 perfumes. É a chance de montar uma seleção elegante, com fragrâncias marcantes e atendimento direto da loja pelo WhatsApp.</p>
-<div class="flex flex-wrap gap-3 mb-10">
-<div class="border border-secondary/30 px-4 py-2 rounded flex items-center justify-center bg-surface-container-low text-on-surface font-label-sm text-label-sm">Menos de R$40 cada</div>
-<div class="border border-secondary/30 px-4 py-2 rounded flex items-center justify-center bg-surface-container-low text-on-surface font-label-sm text-label-sm">Fixação 6 a 8h</div>
-<div class="bg-primary-container text-on-primary-container px-4 py-2 rounded flex items-center justify-center font-label-sm text-label-sm font-bold">1 grátis</div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-5 border border-secondary/30 px-3 py-1 rounded">Americana Shopping | estoque limitado</span>
+<h1 class="font-display-lg mobile-title md:text-[64px] md:leading-[70px] text-on-surface mb-5">Perfume inspirado nos importados por R$45.</h1>
+<p class="font-body-lg text-[15px] leading-7 md:text-body-lg text-on-surface-variant mb-7 max-w-md">No kit promocional, você paga R$199,90 e leva 5 perfumes: cada um sai por R$39,98, com fixação de 6 a 8 horas no corpo.</p>
+<div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 mb-7 w-full md:w-auto">
+<div class="mobile-pill border border-secondary/30 px-4 py-2 rounded flex items-center justify-center bg-surface-container-low text-on-surface font-label-sm text-label-sm">Avulso R$45</div>
+<div class="mobile-pill border border-secondary/30 px-4 py-2 rounded flex items-center justify-center bg-surface-container-low text-on-surface font-label-sm text-label-sm">Kit R$39,98</div>
+<div class="mobile-pill border border-secondary/30 px-4 py-2 rounded flex items-center justify-center bg-surface-container-low text-on-surface font-label-sm text-label-sm">6 a 8h</div>
+<div class="mobile-pill bg-primary-container text-on-primary-container px-4 py-2 rounded flex items-center justify-center font-label-sm text-label-sm font-bold">5º grátis</div>
 </div>
 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-<a class="whatsapp-link whatsapp-btn flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
+<a class="whatsapp-link whatsapp-btn mobile-cta flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">chat</span>
                     Montar meu kit no WhatsApp
                 </a>
-<a class="whatsapp-link whatsapp-outline flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors w-full md:w-auto" href="#">
+<a class="whatsapp-link whatsapp-outline mobile-cta flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">inventory_2</span>
                     Ver opções disponíveis
                 </a>
 </div>
-<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-5">R$199,90 dividido por 5 = R$39,98 cada | fixação de 6 a 8 horas no corpo</p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-4">R$45 no avulso | R$199,90 / 5 = R$39,98 cada | fixação de 6 a 8h</p>
 </div>
-<div class="w-full md:w-1/2 relative mt-10 md:mt-0">
+<div class="w-full md:w-1/2 relative mt-2 md:mt-0">
 <div class="editorial-frame p-2 rounded-lg bg-surface-container-lowest relative z-10">
-<img alt="Perfumes Touti das linhas VIP, LUX, SPA e FIT" class="w-full aspect-[4/5] md:aspect-[3/4] object-contain object-center rounded bg-surface-container-lowest" src="assets/touti-produtos-hero.png"/>
-<div class="absolute bottom-6 right-6 bg-surface-container-highest/90 backdrop-blur border border-secondary/50 text-secondary px-6 py-3 rounded shadow-xl flex flex-col items-center justify-center">
+<img alt="Perfumes Touti das linhas VIP, LUX, SPA e FIT" class="w-full aspect-square sm:aspect-[4/5] md:aspect-[3/4] object-contain object-center rounded bg-surface-container-lowest" src="assets/touti-produtos-hero.png"/>
+<div class="absolute bottom-3 right-3 md:bottom-6 md:right-6 bg-surface-container-highest/90 backdrop-blur border border-secondary/50 text-secondary px-4 md:px-6 py-2 md:py-3 rounded shadow-xl flex flex-col items-center justify-center">
 <span class="font-label-sm text-label-sm uppercase tracking-widest mb-1">Pague 4</span>
 <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Leve 5</span>
 </div>
@@ -205,15 +240,20 @@
 </div>
 </section>
 <section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop mt-stack-md">
-<div class="editorial-frame rounded bg-surface-container-lowest p-8 md:p-12 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+<div class="editorial-frame rounded bg-surface-container-lowest p-5 md:p-12 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-8 items-center">
 <div>
 <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Gancho da promoção</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface mt-4 mb-5">Cheiro de perfume caro sem pagar preço de vitrine.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A proposta é simples: montar um kit com fragrâncias de presença, inspiradas no universo da perfumaria importada, por menos de R$40 cada no conjunto de 5.</p>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mt-4 mb-5">Cheiro de perfume caro sem pagar preço de vitrine.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A proposta é simples: montar um kit com fragrâncias de presença, inspiradas no universo da perfumaria importada, pagando R$45,00 no avulso ou menos de R$40 cada no conjunto de 5.</p>
 </div>
 <div class="grid grid-cols-1 gap-4">
 <div class="bg-surface-container-high border border-secondary/20 rounded p-6">
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Preço por unidade</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Preço avulso Touti</span>
+<strong class="block font-headline-xl text-headline-xl text-primary mt-3">R$45,00</strong>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Perfume com inspiração em importados.</p>
+</div>
+<div class="bg-surface-container-high border border-secondary/20 rounded p-6">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">No kit promocional</span>
 <strong class="block font-headline-xl text-headline-xl text-primary mt-3">R$39,98</strong>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2">R$199,90 dividido em 5 perfumes.</p>
 </div>
@@ -225,10 +265,70 @@
 </div>
 </div>
 </section>
+<section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop mt-stack-md">
+<div class="flex flex-col md:flex-row items-end justify-between gap-6 mb-stack-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Compare o valor</span>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mt-4 mb-4">Tenha inspiração de perfume famoso pagando pouco.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Na Touti, você encontra fragrâncias com inspiração no universo de Carolina Herrera, Silver Scent, Invictus e La Vie Est Belle. O perfume sai por R$45,00 no avulso, ou R$39,98 cada no kit com 5, com fixação de 6 a 8 horas no corpo.</p>
+</div>
+<a class="whatsapp-link whatsapp-btn mobile-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
+<span class="material-symbols-outlined">chat</span>
+                    Ver inspirações no WhatsApp
+                </a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+<article class="editorial-frame rounded bg-surface-container-low p-6 flex flex-col min-h-full">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Inspiração Carolina Herrera</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-3">Good Girl 80ml</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Referência importada vista por R$1.047,00.</p>
+<div class="mt-5 pt-5 border-t border-secondary/20">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Na Touti</span>
+<strong class="block text-primary font-headline-lg text-headline-lg mt-2">R$45,00</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">ou R$39,98 cada no kit</p>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-auto pt-5">6 a 8h no corpo</p>
+</article>
+<article class="editorial-frame rounded bg-surface-container-low p-6 flex flex-col min-h-full">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Inspiração Carolina Herrera</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-3">212 VIP Rosé</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Referência importada vista por R$971,00.</p>
+<div class="mt-5 pt-5 border-t border-secondary/20">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Na Touti</span>
+<strong class="block text-primary font-headline-lg text-headline-lg mt-2">R$45,00</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">peça as opções disponíveis</p>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-auto pt-5">6 a 8h no corpo</p>
+</article>
+<article class="editorial-frame rounded bg-surface-container-low p-6 flex flex-col min-h-full">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Inspiração Jacques Bogart</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-3">Silver Scent 100ml</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Referência importada vista por R$399,00.</p>
+<div class="mt-5 pt-5 border-t border-secondary/20">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Na Touti</span>
+<strong class="block text-primary font-headline-lg text-headline-lg mt-2">R$45,00</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">menos de R$40 no kit</p>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-auto pt-5">presença marcante</p>
+</article>
+<article class="editorial-frame rounded bg-surface-container-low p-6 flex flex-col min-h-full">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Inspiração Rabanne</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-3">Invictus 100ml</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Referência importada vista por R$831,00.</p>
+<div class="mt-5 pt-5 border-t border-secondary/20">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Na Touti</span>
+<strong class="block text-primary font-headline-lg text-headline-lg mt-2">R$45,00</strong>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">atendimento pelo WhatsApp</p>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-auto pt-5">6 a 8h no corpo</p>
+</article>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-5">Referências de preço consultadas em lojas online. Marcas citadas apenas como inspiração olfativa e comparação de valor. Sem vínculo oficial com essas marcas.</p>
+</section>
 <!-- "Monte seu kit" Section -->
-<section class="w-full bg-surface-container-low border-y border-secondary/10 py-stack-xl mt-stack-lg">
+<section class="w-full bg-surface-container-low border-y border-secondary/10 py-14 md:py-stack-xl mt-14 md:mt-stack-lg">
 <div class="max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop flex flex-col items-center text-center">
-<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">Cinco perfumes, um kit com cara de presente.</h2>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mb-6">Cinco perfumes, um kit com cara de presente.</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-stack-lg">Você pode misturar estilos: um para rotina, um para sair, um mais leve, um mais marcante e o 5º para completar a promoção. Tudo com atendimento pelo WhatsApp.</p>
 <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 <!-- Line VIP -->
@@ -257,19 +357,19 @@
 </div>
 </div>
 </div>
-<div class="editorial-frame rounded bg-surface-container-highest mt-stack-md p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left w-full">
+<div class="editorial-frame rounded bg-surface-container-highest mt-stack-md p-5 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left w-full">
 <div>
 <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Dúvida entre as linhas?</span>
 <p class="font-body-lg text-body-lg text-on-surface-variant mt-3 max-w-2xl">Mande uma mensagem e peça uma sugestão. A loja ajuda a montar um kit elegante para presente, uso pessoal ou para deixar opções em casa, sem você precisar escolher no escuro.</p>
 </div>
-<a class="whatsapp-link whatsapp-btn inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
+<a class="whatsapp-link whatsapp-btn mobile-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">chat</span>
                     Pedir sugestão no WhatsApp
                 </a>
 </div>
 </section>
 <!-- Experience Section -->
-<section class="w-full py-stack-xl max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop flex flex-col md:flex-row items-center gap-stack-lg">
+<section class="w-full py-14 md:py-stack-xl max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop flex flex-col md:flex-row items-center gap-8 md:gap-stack-lg">
 <div class="w-full md:w-5/12 order-2 md:order-1 relative">
 <div class="editorial-frame p-2 rounded-lg bg-surface-container-lowest">
 <video aria-label="Vídeo lifestyle Touti FIT" autoplay class="w-full aspect-[3/4] object-cover object-center rounded" loop muted playsinline poster="assets/touti-lifestyle-poster.jpg" src="assets/touti-lifestyle-fit.mp4"></video>
@@ -277,7 +377,7 @@
 </div>
 <div class="w-full md:w-7/12 order-1 md:order-2 flex flex-col items-start justify-center md:pl-12">
 <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-4">Atendimento humano</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">A loja te ajuda a escolher sem enrolação.</h2>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mb-6">A loja te ajuda a escolher sem enrolação.</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">Diga se o kit é para você ou para presente. A equipe responde pelo WhatsApp com as opções disponíveis, sugere combinações e confirma a promoção de R$39,98 por perfume no kit.</p>
 <a class="whatsapp-link inline-flex items-center gap-3 text-primary hover:text-primary-fixed-dim transition-colors font-button-text text-button-text uppercase tracking-widest border-b border-primary/30 pb-1 hover:border-primary" href="#">
                     Falar com a loja agora
@@ -285,14 +385,14 @@
 </a>
 </div>
 </section>
-<section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop pb-stack-xl">
+<section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop pb-16 md:pb-stack-xl">
 <div class="flex flex-col md:flex-row items-end justify-between gap-6 mb-stack-md">
 <div>
 <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Touti em movimento</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface mt-4 mb-4">Veja o perfume no clima real da marca.</h2>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mt-4 mb-4">Veja o perfume no clima real da marca.</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Dois vídeos curtos para mostrar a proposta: fragrância bonita, visual presenteável e chamada direta para montar o kit pelo WhatsApp.</p>
 </div>
-<a class="whatsapp-link whatsapp-outline inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors w-full md:w-auto" href="#">
+<a class="whatsapp-link whatsapp-outline mobile-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">chat</span>
                     Quero esse kit
                 </a>
@@ -306,18 +406,18 @@
 </div>
 </div>
 </section>
-<section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop pb-stack-xl">
-<div class="editorial-frame rounded bg-surface-container-low p-8 md:p-12 grid grid-cols-1 md:grid-cols-[1fr_220px] gap-8 items-center">
+<section class="w-full max-w-container-max mx-auto px-edge-margin-mobile md:px-edge-margin-desktop pb-16 md:pb-stack-xl">
+<div class="editorial-frame rounded bg-surface-container-low p-5 md:p-12 grid grid-cols-1 md:grid-cols-[1fr_220px] gap-8 items-center">
 <div>
 <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Última chamada pelo WhatsApp</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface mt-4 mb-5">Quer separar seu kit antes de ir ao shopping?</h2>
+<h2 class="font-headline-xl mobile-heading md:text-headline-xl md:leading-[56px] text-on-surface mt-4 mb-5">Quer separar seu kit antes de ir ao shopping?</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8">Clique no botão, confirme as fragrâncias do dia e combine o melhor horário com a Touti Americana Shopping. Promoção válida enquanto houver estoque. Fixação: 6 a 8 horas no corpo.</p>
 <div class="flex flex-col sm:flex-row gap-3">
-<a class="whatsapp-link whatsapp-btn inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors" href="#">
+<a class="whatsapp-link whatsapp-btn mobile-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">chat</span>
                         Reservar pelo WhatsApp
                     </a>
-<a class="whatsapp-link whatsapp-outline inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors" href="#">
+<a class="whatsapp-link whatsapp-outline mobile-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded font-button-text text-button-text uppercase tracking-wider transition-colors w-full md:w-auto" href="#">
 <span class="material-symbols-outlined">redeem</span>
                         Quero kit para presente
                     </a>
@@ -332,7 +432,7 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container-lowest border-t border-secondary/10 w-full py-stack-lg flex flex-col items-center justify-center space-y-stack-sm px-edge-margin-desktop text-center mt-stack-xl">
+<footer class="bg-surface-container-lowest border-t border-secondary/10 w-full py-14 md:py-stack-lg flex flex-col items-center justify-center space-y-stack-sm px-edge-margin-mobile md:px-edge-margin-desktop text-center mt-16 md:mt-stack-xl">
 <div class="mb-4">
 <span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tighter">TOUTI</span>
 </div>
@@ -343,6 +443,12 @@
 </div>
 <p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant/50">© 2024 TOUTI AMERICANA SHOPPING. ALL RIGHTS RESERVED.</p>
 </footer>
+<div id="mobile-sticky-cta" class="mobile-sticky-cta fixed md:hidden bottom-3 left-3 right-3 z-[60]">
+<a class="whatsapp-link whatsapp-btn mobile-cta flex items-center justify-center gap-3 rounded font-button-text text-button-text uppercase tracking-wider btn-shadow border border-white/10" href="#">
+<span class="material-symbols-outlined">chat</span>
+        Montar kit no WhatsApp
+    </a>
+</div>
 <script>
   const stitchToutiPhone = "5519982075633";
   const stitchToutiMessage = "Oi! Vi a promoção da Touti Americana Shopping: 5 perfumes por R$199,90, saindo R$39,98 cada. Quero montar meu kit pelo WhatsApp. Quais fragrâncias estão disponíveis hoje?";
@@ -358,6 +464,13 @@
       window.open(stitchToutiUrl, "_blank", "noopener,noreferrer");
     });
   });
+  const stitchStickyCta = document.getElementById("mobile-sticky-cta");
+  const toggleStickyCta = () => {
+    if (!stitchStickyCta) return;
+    stitchStickyCta.classList.toggle("is-visible", window.scrollY > 520);
+  };
+  toggleStickyCta();
+  window.addEventListener("scroll", toggleStickyCta, { passive: true });
 </script>
 </body></html>
 
