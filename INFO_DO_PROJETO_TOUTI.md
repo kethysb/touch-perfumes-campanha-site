@@ -15,15 +15,24 @@ Criar um link/site de venda simples, direto e chique para levar a pessoa ao What
 
 ## WhatsApp usado
 
-- Número: **+55 19 98919-1311**
+- Número: **+55 19 98207-5633**
 - Link gerado pelo site:
-  `https://wa.me/5519989191311`
+  `https://wa.me/5519982075633`
 
 Mensagem automática configurada:
 
 ```text
-Oi! Vi a promoção da Touti Americana Shopping: pague 4 e leve 5 perfumes por R$199,90. Quero montar meu kit com 1 perfume grátis. Quais fragrâncias estão disponíveis?
+Oi! Vi a promoção da Touti Americana Shopping: 5 perfumes por R$199,90, saindo R$39,98 cada. Quero montar meu kit pelo WhatsApp. Quais fragrâncias estão disponíveis hoje?
 ```
+
+## Meta Pixel
+
+- Pixel instalado: **1290284393303620**
+- Eventos configurados:
+  - `PageView` ao carregar a página
+  - `ViewContent` para a oferta do kit de 5 perfumes por R$199,90
+  - `Lead` ao clicar em CTA de WhatsApp
+  - `WhatsAppClick` para separar origem do botão clicado
 
 ## Direção visual pedida
 
