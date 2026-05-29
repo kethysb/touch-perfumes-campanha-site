@@ -1,28 +1,156 @@
-const phone = "5519982075633";
-const message =
+const toutiPhone = "5519982075633";
+const toutiMessage =
   "Oi! Vi a promoção da Touti Americana Shopping: 5 perfumes por R$199,90, saindo R$39,98 cada. Quero montar meu kit pelo WhatsApp. Quais fragrâncias estão disponíveis hoje?";
-const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+const toutiWhatsappUrl = `https://wa.me/${toutiPhone}?text=${encodeURIComponent(toutiMessage)}`;
+const toutiOffer = {
+  content_name: "Kit Touti Americana Shopping - 5 perfumes por R$199,90",
+  content_category: "perfumes",
+  content_type: "product_group",
+  value: 199.9,
+  currency: "BRL",
+  brand: "Touti Perfumes",
+};
 
-document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
-  link.href = whatsappUrl;
+window.__trackedMetaEvents = window.__trackedMetaEvents || [];
+
+const cleanText = (value) => (value || "").replace(/\s+/g, " ").trim().slice(0, 120);
+
+const getElementLabel = (element) =>
+  cleanText(
+    element.dataset.whatsappSource ||
+      element.getAttribute("aria-label") ||
+      element.innerText ||
+      element.textContent ||
+      element.href ||
+      element.getAttribute("href") ||
+      element.tagName,
+  );
+
+const getSectionName = (element) => {
+  const section = element.closest("section, header, footer");
+  return section?.id || section?.getAttribute("aria-label") || section?.className || "page";
+};
+
+const trackMetaEvent = (eventName, parameters = {}, custom = false) => {
+  const payload = {
+    ...toutiOffer,
+    ...parameters,
+  };
+
+  window.__trackedMetaEvents.push({
+    eventName,
+    custom,
+    parameters: payload,
+    timestamp: new Date().toISOString(),
+  });
+
+  if (typeof fbq === "function") {
+    fbq(custom ? "trackCustom" : "track", eventName, payload);
+  }
+};
+
+trackMetaEvent("ViewContent");
+
+document.querySelectorAll(".whatsapp-btn, .whatsapp-link, [data-whatsapp-link]").forEach((link) => {
+  if (!(link instanceof HTMLAnchorElement)) return;
+
+  link.href = toutiWhatsappUrl;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  link.addEventListener("click", () => {
-    if (typeof fbq === "function") {
-      const offer = {
-        content_name: "Kit Touti Americana Shopping - 5 perfumes por R$199,90",
-        content_category: "perfumes",
-        value: 199.90,
-        currency: "BRL"
-      };
-      fbq("track", "Lead", {
-        ...offer,
-        lead_type: "whatsapp"
-      });
-      fbq("trackCustom", "WhatsAppClick", {
-        ...offer,
-        destination_phone: phone
-      });
+});
+
+document.addEventListener("click", (event) => {
+  const target = event.target.closest("a, button, [role='button']");
+  if (!target) return;
+
+  const href = target.href || target.getAttribute("href") || "";
+  const label = getElementLabel(target);
+  const isWhatsapp = href.includes(`wa.me/${toutiPhone}`);
+  const clickPayload = {
+    click_label: label,
+    click_url: href,
+    click_section: getSectionName(target),
+    click_type: isWhatsapp ? "whatsapp" : target.tagName.toLowerCase(),
+  };
+
+  trackMetaEvent("SiteClick", clickPayload, true);
+
+  if (isWhatsapp) {
+    const eventPayload = {
+      ...clickPayload,
+      destination_phone: toutiPhone,
+      button_source: label || "whatsapp",
+    };
+
+    trackMetaEvent("Lead", {
+      ...eventPayload,
+      lead_type: "whatsapp",
+    });
+    trackMetaEvent("WhatsAppClick", eventPayload, true);
+  }
+});
+
+const scrollDepthsTracked = new Set();
+const trackScrollDepth = () => {
+  const doc = document.documentElement;
+  const pageHeight = Math.max(doc.scrollHeight, document.body.scrollHeight);
+  const viewportBottom = window.scrollY + window.innerHeight;
+  const depth = Math.min(100, Math.round((viewportBottom / pageHeight) * 100));
+
+  [25, 50, 75, 90].forEach((threshold) => {
+    if (depth >= threshold && !scrollDepthsTracked.has(threshold)) {
+      scrollDepthsTracked.add(threshold);
+      trackMetaEvent("ScrollDepth", { scroll_depth: threshold }, true);
     }
   });
+};
+
+trackScrollDepth();
+window.addEventListener("scroll", trackScrollDepth, { passive: true });
+
+[15, 30, 60, 120].forEach((seconds) => {
+  window.setTimeout(() => {
+    trackMetaEvent("TimeOnPage", { seconds_on_page: seconds }, true);
+  }, seconds * 1000);
 });
+
+document.querySelectorAll("video").forEach((video, index) => {
+  const progressTracked = new Set();
+  const videoName = cleanText(video.getAttribute("aria-label") || video.currentSrc || `video-${index + 1}`);
+  const baseVideoPayload = {
+    video_name: videoName,
+    video_index: index + 1,
+  };
+
+  video.addEventListener("play", () => {
+    trackMetaEvent("VideoPlay", baseVideoPayload, true);
+  });
+
+  video.addEventListener("timeupdate", () => {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+
+    const progress = Math.round((video.currentTime / video.duration) * 100);
+    [25, 50, 75].forEach((threshold) => {
+      if (progress >= threshold && !progressTracked.has(threshold)) {
+        progressTracked.add(threshold);
+        trackMetaEvent("VideoProgress", {
+          ...baseVideoPayload,
+          video_progress: threshold,
+        }, true);
+      }
+    });
+  });
+
+  video.addEventListener("ended", () => {
+    trackMetaEvent("VideoComplete", baseVideoPayload, true);
+  });
+});
+
+const stitchStickyCta = document.getElementById("mobile-sticky-cta");
+const toggleStickyCta = () => {
+  if (!stitchStickyCta) return;
+  stitchStickyCta.classList.toggle("is-visible", window.scrollY > 520);
+};
+
+toggleStickyCta();
+window.addEventListener("scroll", toggleStickyCta, { passive: true });
